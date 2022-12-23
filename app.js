@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require("express");
 
 const app = express();
@@ -22,7 +23,7 @@ app.get("/", (req, res) => {
 
 app.post("/", (req, res) => {
   var city = req.body.city;
-  var url = ` https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=8639566c6f9ec2da839dcd411f158ca8&units=metric`;
+  var url = ` https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.API_KEY}&units=metric`;
   https.get(url, (response) => {
     console.log(response.statusCode);
     // conditions
